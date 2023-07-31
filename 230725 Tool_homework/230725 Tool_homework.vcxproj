@@ -82,6 +82,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -122,9 +124,11 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(WindowsSDK_IncludePath);../Header</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
+      <AdditionalDependencies>d3d9.lib;d3dx9.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
@@ -194,6 +198,7 @@
     <ClInclude Include="230725 Tool_homeworkDoc.h" />
     <ClInclude Include="230725 Tool_homeworkView.h" />
     <ClInclude Include="Device.h" />
+    <ClInclude Include="FileInfo.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="MapTool.h" />
@@ -213,6 +218,7 @@
     <ClCompile Include="230725 Tool_homework.cpp" />
     <ClCompile Include="230725 Tool_homeworkDoc.cpp" />
     <ClCompile Include="230725 Tool_homeworkView.cpp" />
+    <ClCompile Include="FileInfo.cpp" />
     <ClCompile Include="MapTool.cpp" />
     <ClCompile Include="MiniVIew.cpp" />
     <ClCompile Include="MultiTexture.cpp" />

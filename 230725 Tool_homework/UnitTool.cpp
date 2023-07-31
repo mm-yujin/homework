@@ -417,7 +417,7 @@ void CUnitTool::OnDeleteButton()
 	UpdateData(TRUE);
 
 	if ((m_strSearch == L"") || (bCheck == false))
-		ERR_MSG(L"삭제할 수 있는 값이 없습니다.", MB_OK | MB_SERVICE_NOTIFICATION);
+		AfxMessageBox(L"삭제할 수 있는 값이 없습니다.", MB_OK | MB_SERVICE_NOTIFICATION);
 
 	if ((m_strSearch != L"") && (bCheck == true))
 		m_ListBox.DeleteString(m_ListBox.FindString(-1, m_strSearch));

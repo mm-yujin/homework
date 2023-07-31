@@ -61,6 +61,9 @@
     <Filter Include="06. FormView\Dialog\01. MapTool">
       <UniqueIdentifier>{5fa6b912-a61c-4203-8b13-d8fb7ac62ecd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="05. Etc\01. FileInfo">
+      <UniqueIdentifier>{bd5163f3-769b-4a3f-b007-f7617deb0b97}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="230725 Tool_homework.h">
@@ -102,9 +105,6 @@
     <ClInclude Include="MultiTexture.h">
       <Filter>04. Texture\01. Multi</Filter>
     </ClInclude>
-    <ClInclude Include="Terrain.h">
-      <Filter>05. Etc</Filter>
-    </ClInclude>
     <ClInclude Include="MiniVIew.h">
       <Filter>06. FormView\MiniView</Filter>
     </ClInclude>
@@ -116,6 +116,12 @@
     </ClInclude>
     <ClInclude Include="MapTool.h">
       <Filter>06. FormView\Dialog\01. MapTool</Filter>
+    </ClInclude>
+    <ClInclude Include="Terrain.h">
+      <Filter>05. Etc\00. Terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="FileInfo.h">
+      <Filter>05. Etc\01. FileInfo</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -149,9 +155,6 @@
     <ClCompile Include="MultiTexture.cpp">
       <Filter>04. Texture\01. Multi</Filter>
     </ClCompile>
-    <ClCompile Include="Terrain.cpp">
-      <Filter>05. Etc</Filter>
-    </ClCompile>
     <ClCompile Include="MiniVIew.cpp">
       <Filter>06. FormView\MiniView</Filter>
     </ClCompile>
@@ -163,6 +166,12 @@
     </ClCompile>
     <ClCompile Include="MapTool.cpp">
       <Filter>06. FormView\Dialog\01. MapTool</Filter>
+    </ClCompile>
+    <ClCompile Include="Terrain.cpp">
+      <Filter>05. Etc\00. Terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="FileInfo.cpp">
+      <Filter>05. Etc\01. FileInfo</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
