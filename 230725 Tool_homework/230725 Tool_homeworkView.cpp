@@ -38,6 +38,8 @@ BEGIN_MESSAGE_MAP(CMy230725ToolhomeworkView, CScrollView)
 	ON_COMMAND(ID_FILE_PRINT_PREVIEW, &CScrollView::OnFilePrintPreview)
 	ON_WM_DESTROY()
 	ON_WM_LBUTTONDOWN()
+	ON_WM_RBUTTONDOWN()
+	ON_WM_RBUTTONUP()
 	ON_WM_MOUSEMOVE()
 END_MESSAGE_MAP()
 
@@ -152,7 +154,6 @@ void CMy230725ToolhomeworkView::OnInitialUpdate()
 	if (FAILED(CDevice::Get_Instance()->Initialize()))
 		AfxMessageBox(L"CDevice Initialize FAILED");
 
-
 	if (FAILED(CTextureMgr::Get_Instance()->Insert_Texture(L"../Texture/Cube.png", TEX_SINGLE, L"Cube")))
 		AfxMessageBox(L"CUBE IMG FAILED");
 
@@ -252,11 +253,47 @@ void CMy230725ToolhomeworkView::OnLButtonDown(UINT nFlags, CPoint point)
 
 }
 
+
+void CMy230725ToolhomeworkView::OnRButtonDown(UINT nFlags, CPoint point)
+{
+	// TODO: 여기에 메시지 처리기 코드를 추가 및/또는 기본값을 호출합니다.
+	CScrollView::OnRButtonDown(nFlags, point);
+	//m_AfterPoint = {0, 0};
+	//ScrollX = 0;
+	//ScrollY = 0;
+
+	m_BeforePoint = point;
+
+	/*if ((ScrollX == 0) && (ScrollY == 0)) {
+		m_BeforePoint = point;
+	}
+	else {
+		m_BeforePoint = m_LastPoint;
+	}*/
+}
+
+void CMy230725ToolhomeworkView::OnRButtonUp(UINT nFlags, CPoint point)
+{
+	// TODO: 여기에 메시지 처리기 코드를 추가 및/또는 기본값을 호출합니다.
+	CScrollView::OnRButtonUp(nFlags, point);
+	m_LastPoint = point;
+}
+
 void CMy230725ToolhomeworkView::OnMouseMove(UINT nFlags, CPoint point)
 {
 	CScrollView::OnMouseMove(nFlags, point);
 
-	//if (GetAsyncKeyState(VK_LBUTTON))
+	if (GetAsyncKeyState(VK_RBUTTON) && 0x8000)
+	{
+		m_AfterPoint = m_BeforePoint - point;
+
+		ScrollX -= m_AfterPoint.x * 0.05f;
+		ScrollY -= m_AfterPoint.y * 0.05f;
+	}
+
+	Invalidate(FALSE);
+
+
 	//{
 	//	CMainFrame* pMainFrm = dynamic_cast<CMainFrame*>(AfxGetApp()->GetMainWnd());
 	//	CMyForm* pMyForm = dynamic_cast<CMyForm*>(pMainFrm->m_SecondSplitter.GetPane(1, 0));
@@ -267,9 +304,7 @@ void CMy230725ToolhomeworkView::OnMouseMove(UINT nFlags, CPoint point)
 
 	//	Invalidate(FALSE);
 
-
 	//	CMiniView* pMiniView = dynamic_cast<CMiniView*>(pMainFrm->m_SecondSplitter.GetPane(0, 0));
-
 	//	pMiniView->Invalidate(FALSE);
 	//}
 }

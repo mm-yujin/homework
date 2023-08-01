@@ -51,14 +51,23 @@ public:
 	virtual void OnInitialUpdate();
 	afx_msg void OnDestroy();
 	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
+	afx_msg void OnRButtonDown(UINT nFlags, CPoint point);
+	afx_msg void OnRButtonUp(UINT nFlags, CPoint point);
 
 public:
 	CTerrain* m_pTerrain = nullptr;
 	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
 
+	int Get_ScrollX() { return ScrollX; }
+	int Get_ScrollY() { return ScrollY; }
 
 public:
-	
+	CPoint m_BeforePoint;
+	CPoint m_AfterPoint;
+	CPoint m_LastPoint;
+
+	int ScrollX = 0;
+	int ScrollY = 0;
 };
 
 #ifndef _DEBUG  // 230725 Tool_homeworkView.cpp의 디버그 버전

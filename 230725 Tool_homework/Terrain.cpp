@@ -62,8 +62,8 @@ void CTerrain::Render()
 
         D3DXMatrixIdentity(&matWorld);
         D3DXMatrixScaling(&matScale, 1.f, 1.f, 1.f);
-        D3DXMatrixTranslation(&matTrans, iter->vPos.x - m_pMainView->GetScrollPos(0),
-                                         iter->vPos.y - m_pMainView->GetScrollPos(1),
+        D3DXMatrixTranslation(&matTrans, iter->vPos.x - m_pMainView->GetScrollPos(0) + m_pMainView->Get_ScrollX(),
+                                         iter->vPos.y - m_pMainView->GetScrollPos(1) + m_pMainView->Get_ScrollY(),
                                          iter->vPos.z);
 
         matWorld = matScale * matTrans;
