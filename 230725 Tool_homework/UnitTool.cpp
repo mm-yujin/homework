@@ -223,7 +223,7 @@ void CUnitTool::OnSaveButton()
 	TCHAR szPath[MAX_PATH] = L"";
 	GetCurrentDirectory(MAX_PATH, szPath);
 	PathRemoveFileSpec(szPath);
-	//lstrcat(szPath, L"\\Data");
+	lstrcat(szPath, L"\\Data");
 	Dlg.m_ofn.lpstrInitialDir = szPath;
 	
 	if (Dlg.DoModal())  //모달 방식은 메시지 발생을 점유한다는 것(다른 부분 안눌러지거나 하는 거 )
@@ -293,7 +293,7 @@ void CUnitTool::OnLoadButton()
 	TCHAR szPath[MAX_PATH] = L"";
 	GetCurrentDirectory(MAX_PATH, szPath);
 	PathRemoveFileSpec(szPath);
-	//lstrcat(szPath, L"\\Data");
+	lstrcat(szPath, L"\\Data");
 	Dlg.m_ofn.lpstrInitialDir = szPath;
 
 	if (Dlg.DoModal())

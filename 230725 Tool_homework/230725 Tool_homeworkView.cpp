@@ -16,6 +16,10 @@
 #include "TextureMgr.h"
 #include "MainFrm.h"
 
+#include "MyForm.h"
+#include "MapTool.h"
+#include "MiniVIew.h"
+
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -32,7 +36,9 @@ BEGIN_MESSAGE_MAP(CMy230725ToolhomeworkView, CScrollView)
 	ON_COMMAND(ID_FILE_PRINT, &CScrollView::OnFilePrint)
 	ON_COMMAND(ID_FILE_PRINT_DIRECT, &CScrollView::OnFilePrint)
 	ON_COMMAND(ID_FILE_PRINT_PREVIEW, &CScrollView::OnFilePrintPreview)
+	ON_WM_DESTROY()
 	ON_WM_LBUTTONDOWN()
+	ON_WM_MOUSEMOVE()
 END_MESSAGE_MAP()
 
 // CMy230725ToolhomeworkView 생성/소멸
@@ -225,6 +231,45 @@ void CMy230725ToolhomeworkView::OnLButtonDown(UINT nFlags, CPoint point)
 
 	CScrollView::OnLButtonDown(nFlags, point);
 
-	m_pTerrain->Tile_Change(D3DXVECTOR3((float)point.x + GetScrollPos(0), (float)point.y + GetScrollPos(1), 0.f), 0);
+	CMainFrame* pMainFrm = dynamic_cast<CMainFrame*>(AfxGetApp()->GetMainWnd());
+	CMyForm* pMyForm = dynamic_cast<CMyForm*>(pMainFrm->m_SecondSplitter.GetPane(1, 0));
+	CMapTool* pMapTool = &(pMyForm->m_MapTool);
+
+	m_pTerrain->Tile_Change(D3DXVECTOR3((float)point.x + GetScrollPos(0),
+		(float)point.y + GetScrollPos(1), 0.f), pMapTool->m_iDrawID);
+
+	// Invalidate : 호출 시, 윈도우의 WM_PAINT와 WM_ERASEBKGND 메세지를 발생시킴
+	// FALSE : WM_PAINT 메세지만 발생
+	// TRUE : WM_PAINT, WM_ERASEBKGND 메세지를 둘 다 발생
+
 	Invalidate(FALSE);
+
+
+	CMiniView* pMiniView = dynamic_cast<CMiniView*>(pMainFrm->m_SecondSplitter.GetPane(0, 0));
+
+	pMiniView->Invalidate(FALSE);
+
+
+}
+
+void CMy230725ToolhomeworkView::OnMouseMove(UINT nFlags, CPoint point)
+{
+	CScrollView::OnMouseMove(nFlags, point);
+
+	//if (GetAsyncKeyState(VK_LBUTTON))
+	//{
+	//	CMainFrame* pMainFrm = dynamic_cast<CMainFrame*>(AfxGetApp()->GetMainWnd());
+	//	CMyForm* pMyForm = dynamic_cast<CMyForm*>(pMainFrm->m_SecondSplitter.GetPane(1, 0));
+	//	CMapTool* pMapTool = &(pMyForm->m_MapTool);
+
+	//	m_pTerrain->Tile_Change(D3DXVECTOR3((float)point.x + GetScrollPos(0),
+	//		(float)point.y + GetScrollPos(1), 0.f), pMapTool->m_iDrawID);
+
+	//	Invalidate(FALSE);
+
+
+	//	CMiniView* pMiniView = dynamic_cast<CMiniView*>(pMainFrm->m_SecondSplitter.GetPane(0, 0));
+
+	//	pMiniView->Invalidate(FALSE);
+	//}
 }

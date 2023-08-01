@@ -54,6 +54,8 @@ public:
 
 public:
 	CTerrain* m_pTerrain = nullptr;
+	afx_msg void OnMouseMove(UINT nFlags, CPoint point);
+
 
 public:
 	

@@ -40,7 +40,13 @@ typedef struct tagTile
 
 typedef	struct tagUnitData
 {
+	//Cstring이 MFC에서만 되는 거여서 오류가 나는 거
+
+#ifdef _AFX
 	CString	strName;	
+#else
+	wstring	strName;
+#endif
 	int		iAttack;
 	int		iHp;
 	BYTE	byJobIndex;
