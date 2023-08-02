@@ -47,7 +47,7 @@ void CMouse::Release(void)
 
 void CMouse::OffSet(void)
 {
-	int m_iSpeed = 2;
+	float m_iSpeed = 2.f;
 
 	float	iOffSetMinX = WINCX * 0.5f - 100; 		
 	float	iOffSetMaxX = WINCX * 0.5f + 100;

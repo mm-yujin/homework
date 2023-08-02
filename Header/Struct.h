@@ -14,6 +14,8 @@ typedef	struct tagFrame
 {
 	float		fFrame; // 프레임을 세기 위한 변수
 	float		fMax;	// 최대 이미지의 프레임 수
+	DWORD		dwTime;
+	//만들고 나서 쿼리퍼포먼스카운터로 바꿀 것
 
 }FRAME;
 

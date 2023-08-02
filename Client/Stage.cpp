@@ -3,6 +3,7 @@
 #include "TextureMgr.h"
 #include "ObjMgr.h"
 #include "Mouse.h"
+#include "Player.h"
 
 CStage::CStage()
 {
@@ -22,30 +23,25 @@ HRESULT CStage::Ready_Scene()
 	}	
 
 	CObj*	pObj = new CMyTerrain;
-	
 	if (nullptr == pObj)
 		return E_FAIL;
-
 	pObj->Initialize();	
 	CObjMgr::Get_Instance()->Add_Object(CObjMgr::TERRAIN, pObj);
 
 
 	CObj* ppObj = new CMouse;
-
 	if (nullptr == ppObj)
 		return E_FAIL;
-
 	ppObj->Initialize();
 	CObjMgr::Get_Instance()->Add_Object(CObjMgr::MOUSE, ppObj);
 
+
 	// 플레이어
-	/*pObj = new CPlayer;
-	if (nullptr == pObj)
+	CObj* pppObj = new CPlayer;
+	if (nullptr == pppObj)
 		return E_FAIL;
-
-	pObj->Initialize();
-
-	CObjMgr::Get_Instance()->Add_Object(CObjMgr::PLAYER, pObj);*/
+	pppObj->Initialize();
+	CObjMgr::Get_Instance()->Add_Object(CObjMgr::PLAYER, pppObj);
 	
 	return S_OK;
 }

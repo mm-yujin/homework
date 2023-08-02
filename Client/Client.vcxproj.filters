@@ -55,6 +55,9 @@
     <Filter Include="01. Manager\Scroll">
       <UniqueIdentifier>{ff441932-11a5-4e5d-9351-b55c61af9546}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02. Obj\Player">
+      <UniqueIdentifier>{7da2b22d-ea8b-4190-bb83-b9113804cd3e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -117,6 +120,9 @@
     <ClInclude Include="Scroll.h">
       <Filter>01. Manager\Scroll</Filter>
     </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>02. Obj\Player</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -169,6 +175,9 @@
     </ClCompile>
     <ClCompile Include="Scroll.cpp">
       <Filter>01. Manager\Scroll</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>02. Obj\Player</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
